@@ -576,39 +576,6 @@ class Mean(Module):
     def compute_grads(self, grads, shape):
         grads = np.expand_dims(grads, self.axis)
         return np.broadcast_to(grads, shape) / shape[self.axis]
-    
-class Tanh(Module):
-    """ NNumpy implementation of the hyperbolic tangent function. """
-        
-    def compute_outputs(self, s):
-        """
-        Parameters
-        ----------
-        s : (N, K) ndarray
-        
-        Returns
-        -------
-        a : (N, K) ndarray
-        cache : ndarray or iterable of ndarrays
-        """
-        cache = s
-        return np.tanh(s), cache
-        raise NotImplementedError("TODO: implement Tanh.compute_outputs method!")
-
-    
-    def compute_grads(self, grads, cache):
-        """
-        Parameters
-        ----------
-        grads : (N, K) ndarray
-        cache : ndarray or iterable of ndarrays
-
-        Returns
-        -------
-        ds : (N, K) ndarrays
-        """
-        return grads*(1-np.tanh(cache)**2)
-        raise NotImplementedError("TODO: implement Tanh.compute_grads method!")
 ########################################################################
 ########################################################################
 ########################################################################
